@@ -1,0 +1,296 @@
+/* -----------------------------------------------------------------------------*/
+/* ------------------------------- Customized ----------------------------------*/
+/* -----------------------------------------------------------------------------*/
+.sapMLnk{
+  color: #eb1a0b !important;
+}
+
+.sapUiForm .sapUiFormTitle {
+    color: #000000;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+.marginTopNP{
+       margin-top:20px;
+       font-weight:bold !important;
+       color: #4E5053 !important;
+}
+
+/* Sale Date colors */
+
+.salegreen{
+	background-color: #b8e288;
+}
+
+.saleyellow{
+	background-color: #fff177;
+}
+
+.saleorange{
+	background-color: #ff9800;
+}
+
+.salelightred{
+	background-color: #fbbcbc;
+}
+
+.salered{
+	background-color: #fb3838;
+}
+
+/* Personal Values */
+
+.personalValuesPopupInput{
+	margin-top: -10px;
+}
+
+.personalValuesPopupText{
+	margin-top: 15px;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.personalValuesPopupRadio{
+	margin-top: 10px;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+/* Radio Buttons */
+
+.radioBookRedel{
+	background-color: rgba(251, 238, 127, 0.6);
+    font-weight: bolder;
+}
+
+.processSwitch{
+	font-weight: bolder !important;
+	font-size: 20px !important;
+	margin-top:15px !important;
+}
+
+/* General */
+
+.dnadownload{
+	font-weight: bold !important;
+	font-size: 12px !important;
+	/*margin-top:15px !important;*/
+	height: 30px;
+    margin-top: 10px;
+    line-height: 0rem;
+}
+
+
+.locationCombo{
+	background-color: rgba(255, 0, 0, 0.83);
+}
+
+.depotCustomerCombo{
+	height: 120px !important;
+	white-space: pre-wrap !important;
+}
+
+.sapMTokenizer {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    white-space: pre-wrap;
+}
+
+.f4image{
+	width: 24px;
+    height: 24px;
+}
+.selectAllCheckBox{
+    left: -0.8125rem;
+    height: 1.0rem;
+    width: 0.8rem;
+}
+
+.noStockCheckBox{
+    left: -0.8125rem;
+}
+
+.unitCombo{
+	background-color: rgba(56, 43, 251, 0.83);
+}
+
+.customerCombo{
+	background-color: black !important;
+}
+
+.toolbarSep {
+    width: 0.4rem;
+    background: #000000;
+    height: 3rem;
+}
+
+.totalPages{
+	font-family: Arial,Helvetica,sans-serif;
+    font-size: 16px !important;
+    color: #bc1616 !important;
+}
+.strongblue{
+	background-color: #34b7fb;
+	/*color: black !important;*/
+	font-weight: bolder !important;
+}
+.lightblue{
+	background-color: #7acdf8;
+	/*color: black !important;*/
+	font-weight: bolder !important;
+}
+
+.lightred{
+	background-color: #ffcbcb;
+	/*color: black !important;*/
+	font-weight: bolder !important;
+}
+
+.strongred{
+	background-color: #ff8f8f;
+	/*color: black !important;*/
+	font-weight: bolder !important;
+}
+
+.lightorange{
+	background-color: #ffd07a;
+	/*color: black !important;*/
+	font-weight: bolder !important;
+}
+
+.strongorange{
+	background-color: #ffbc40;
+	/*color: black !important;*/
+	font-weight: bolder !important;
+}
+
+.lightgreen{
+	background-color: #96ef9a;
+	/*color: black !important;*/
+	font-weight: bolder !important;
+}
+
+.lightyellow{
+  background-color: #f3f6ac;
+}
+
+.wraptext{
+white-space: pre-wrap !important;
+}
+
+.wraptextcol{
+white-space: pre-wrap !important;
+font-size: 13px !important;
+font-weight: bold !important;
+}
+
+.fontTitle {
+font: 16px arial,sans-serif !important;
+color: black !important;
+font-weight: bold !important;
+text-decoration: underline;
+}
+
+/* Buttons */
+
+.excelBtn{
+border: 1px solid #cccccc;
+font:14px arial,sans-serif;
+border-radius: 4px;
+background-color: white;
+color: #707277;
+padding: 5px 5px 3px;
+height: 40px !important;
+width : 40px !important;
+}
+
+.excelBtn:hover{
+border: 1px solid #cccccc;
+border-radius: 4px;
+font:14px arial,sans-serif;
+background-color: #cccccc;
+color: black;
+padding: 5px 5px 3px;
+height: 40px !important;
+width : 40px !important;
+}
+
+.submitBtn:hover{
+border: 1px solid #e80e0e;
+border-radius: 4px;
+font:14px arial,sans-serif;
+background-color: #e80e0e;
+color: white;
+padding:8px
+}
+
+.submitBtn{
+border: 1px solid #cc292b;
+font:14px arial,sans-serif;
+border-radius: 4px;
+background-color: #cc292b;
+color: white !important;
+padding:8px;
+}
+
+
+/* Margins */
+
+.marginTop15{
+       margin-top:15px !important;
+}
+
+.marginTop10{
+       margin-top:10px !important;
+}
+
+.marginBottom10{
+       margin-bottom:10px !important;
+}
+
+.marginBottom50{
+       margin-bottom:50px !important;
+}
+
+.marginBottom25{
+       margin-bottom:25px !important;
+}
+
+.marginTop50{
+       margin-top:50px !important;
+}
+
+/* Floats */
+
+.floatRight{
+	float: right !important;
+}
+.floatLeft{
+	float: left !important;
+}
+.floatCenter{
+	margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.selectionLabels{
+	white-space: pre-wrap !important;
+	margin-top: 15px;
+	/*margin-left: 15px;*/
+    /*color: rgba(0, 10, 134, 0.68) !important;*/
+    color : black !important;
+    font-size: 0.95rem !important;
+    font-family: Arial,Helvetica,sans-serif;
+    font-weight: bolder !important;
+}
+
+.feedbackPanel{
+	margin-top : 15px !important;
+	color: black !important;
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    width: 580px !important;
+}

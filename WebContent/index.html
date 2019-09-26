@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <TITLE>Dynamic Net-A 3.0</TITLE>
+
+    <!-- <script src="resources/sap-ui-core.js"s -->
+    <script
+      src="https://sapui5.hana.ondemand.com/1.40.9/resources/sap-ui-core.js"
+      id="sap-ui-bootstrap"
+      data-sap-ui-libs="sap.m,sap.ui.table,sap.ui.commons,sap.ui.comp"
+      data-sap-ui-theme="sap_bluecrystal"
+    ></script>
+    <!-- only load the mobile lib "sap.m" and the "sap_bluecrystal" theme -->
+
+    <link rel="stylesheet" href="css/newstyle.css" media="all" />
+    <link rel="stylesheet" href="css/newstylestandard.css" media="all" />
+
+    <script src="js/utility.js"></script>
+    <script src="js/dateformatter.js"></script>
+
+    <script type="text/javascript" src="js/globalize.js"></script>
+    <script type="text/javascript" src="js/globalize.cultures.js"></script>
+
+    <!-- Dashboard Design -->
+
+    <script src="js/createDash.js"></script>
+
+    <!-- Dynamic Net - A -->
+
+    <script src="js/neta/newfneta.js"></script>
+
+    <script src="js/neta/newfnetaLeasingTable.js"></script>
+    <script src="js/neta/newfnetaContainerSalesTable.js"></script>
+    <script src="js/neta/newfnetaOutstandingTable.js"></script>
+	<script src="js/neta/newfnetaPosnTable.js"></script>
+
+    <script src="js/neta/newfnetafilters.js"></script>
+
+    <script src="js/neta/newfnetasort.js"></script>
+    <script src="js/neta/newfnetaFilterOuts.js"></script>
+    <script src="js/neta/newnaUnitLevel.js"></script>
+    <script src="js/neta/newnaPOLevel.js"></script>
+    <script src="js/neta/newnaPOEQUNRLevel.js"></script>
+    <script src="js/neta/newnaDepotLevel.js"></script>
+    <script src="js/neta/newrnaDepotLevel.js"></script>
+
+    <script src="js/neta/newnaSPECLevel.js"></script>
+    <script src="js/neta/newnaCERTLevel.js"></script>
+
+    <script src="js/neta/newnaBookingLevel.js"></script>
+    <script src="js/neta/newnaTINLevel.js"></script>
+    <script src="js/neta/newnaPickLevel.js"></script>
+
+    <script src="js/neta/newfremneta.js"></script>
+    <script src="js/neta/newfremnetaFilterOuts.js"></script>
+    <script src="js/neta/newnaRemarkLevel.js"></script>
+
+    <script src="js/neta/f4helper.js"></script>
+    <script src="js/neta/feedback.js"></script>
+
+    <link rel="stylesheet" href="css/jBox.css" type="text/css" />
+
+    <!--  Export to PDF-->
+    <script src="js/jsPDF/jsexportutility.js"></script>
+    <script src="js/jsPDF/jspdf.js"></script>
+    <script src="js/jsPDF/jspdf.min.js"></script>
+    <script src="js/jsPDF/jspdf.plugin.addimage.js"></script>
+    <script src="js/jsPDF/jspdf.plugin.cell.js"></script>
+    <script src="js/jsPDF/jspdf.plugin.from_html.js"></script>
+    <script src="js/jsPDF/jspdf.plugin.ie_below_9_shim.js"></script>
+    <script src="js/jsPDF/jspdf.plugin.javascript.js"></script>
+    <script src="js/jsPDF/jspdf.plugin.sillysvgrenderer.js"></script>
+    <script src="js/jsPDF/jspdf.plugin.split_text_to_size.js"></script>
+    <script src="js/jsPDF/jspdf.plugin.standard_fonts_metrics.js"></script>
+    <script src="js/jsPDF/jspdf.PLUGINTEMPLATE.js"></script>
+    <script src="js/jsPDF/jspdf.source.js"></script>
+    <script type="text/javascript" src="js/globalize.js"></script>
+    <script type="text/javascript" src="js/globalize.cultures.js"></script>
+    <script src="js/jBox/jBox.min.js"></script>
+    <script>
+      function getServiceUrl(sServiceUrl) {
+        //for local testing prefix with proxy
+        //if you and your team use a special host name or IP like 127.0.0.1 for localhost please adapt the if statement below
+        if (window.location.hostname == "localhost") {
+          return "proxy/" + sServiceUrl;
+        } else {
+          return sServiceUrl;
+        }
+      }
+
+      var Timest;
+      var dashItemL = "";
+	  var dashItemR = "";
+	  
+      var auth_serviceUrl = getServiceUrl("/sap/opu/odata/sap/ZUTIL_REP_SRV");
+      var service = getServiceUrl("/sap/opu/odata/sap/ZUTIL_REP_SRV");
+      var serviceUTE = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV");
+      //var netAService = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_BWDASH_2_SRV/");
+      //var netALink = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_BWDASH_2_SRV/ZPM_M04_YGES_ZPM_M04_Q0001UResults");
+      var netAService = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV");
+      var netALink =
+	  getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/netas?$filter=Maxrows eq 6");
+      var netAServiceFull = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV");
+      var netALinkFull = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/netas");
+
+      var fnetaService = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV");
+      var fnetaLink = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_leaseSet");
+      var fremnetaLink = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_dna_cs");
+      var fnetaFb = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_fbSet");
+      var fnetaFbFiles = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/uploadSet");
+
+      var foutnetaLink = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_dna_out");
+      var fposnnetaLink = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_posn_out");
+
+      var fremnetaLinkERP = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_dna_rem_erp");
+      var fnetaLinkERP = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_dna_erp");
+      var fnetaLinkCRM = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_dna_crm");
+      var fnetaLinkPICK = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_dna_pick");
+      var fnetaLinkBookedUnits =
+	  getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_dna_bookedunitsSet");
+      var fnetaLinkTIN = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_dna_tinSet");
+      var fnetaLinkDOC = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/Publication_File");
+      var fnetaLinkDEPOT = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/depotSet");
+      var fnetaLinkREMDEPOT = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/depotcsSet");
+      var fnetaLinkDNDownload =
+	  getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/dndownloadSet");
+      var fnetaLinkSAPCert = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sapcertSet");
+      var fnetaLinkSILVERCert =
+	  getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/silvercertSet");
+      var fnetaLinkSaveFilter =
+	  getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/saveFilterSet");
+      var fnetaLinkGetFilter = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/getFilterSet");
+      var fnetaLinkPO = getServiceUrl("/sap/opu/odata/sap/ZUTIL_ERP_SRV/sdb_poSet");
+
+      //var fnetaService = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV");
+      //var fnetaLink = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/utype_netas");
+      var equiService = getServiceUrl("/sap/opu/odata/sap/ZUI5_SDB_LOCAL_SRV");
+      var equiLink = getServiceUrl("/sap/opu/odata/sap/ZUI5_SDB_LOCAL_SRV/unit_netas/");
+
+      var serviceUrl = getServiceUrl("/sap/opu/odata/sap/ZNW_SEACO_PORTAL_SECPGW1_4_SRV");
+      var netATBC = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV");
+      var netATBCService =
+	  getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/top10bycusts?$filter= LsQnum eq '1'");
+      var netATBD = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV");
+      var netATBDService =
+	  getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/top10bycusts?$filter= LsQnum eq '2'");
+      var netATRC = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV");
+      var netATRCService =
+	  getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/top10bycusts?$filter= LsQnum eq '3'");
+      var netATRD = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV");
+      var netATRDService =
+	  getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/top10bycusts?$filter= LsQnum eq '4'");
+      var netAORT = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV");
+      var netAORTService =
+	  getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/orts?$filter=LsQnum eq '2'");
+      var netAORTFull = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/orts");
+      var netAOBK = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV");
+      var netAOBKService =
+	  getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/obks?$filter=LsQnum eq '2'");
+      var netAOBKFull = getServiceUrl("/sap/opu/odata/sap/ZNW_UI5_TBC_TRC_Q00013_SRV/obks");
+
+      var serviceDEP = getServiceUrl("/sap/opu/odata/sap/ZMNR_DEP_SRV/");
+
+      var isMobile = {
+        Android: function() {
+          return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+          return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+          return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+          return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+          return (
+            isMobile.Android() ||
+            isMobile.BlackBerry() ||
+            isMobile.iOS() ||
+            isMobile.Opera() ||
+            isMobile.Windows()
+          );
+        }
+      };
+      var fileTypeJson = [
+        { fileextension: "bas", mimetype: "text/plain" },
+        { fileextension: "bmp", mimetype: "image/bmp" },
+        { fileextension: "raw", mimetype: "text/plain" },
+        { fileextension: "c", mimetype: "text/plain" },
+        { fileextension: "css", mimetype: "text/css" },
+        { fileextension: "dir", mimetype: "application/x-director" },
+        { fileextension: "doc", mimetype: "application/msword" },
+        { fileextension: "docx", mimetype: "application/msword" },
+        { fileextension: "dot", mimetype: "application/msword" },
+        { fileextension: "gif", mimetype: "image/gif" },
+        { fileextension: "gz", mimetype: "application/x-gzip" },
+        { fileextension: "h", mimetype: "text/plain" },
+        { fileextension: "htm", mimetype: "text/html" },
+        { fileextension: "html", mimetype: "text/html" },
+        { fileextension: "htt", mimetype: "text/webviewhtml" },
+        { fileextension: "ico", mimetype: "image/x-icon" },
+        { fileextension: "ief", mimetype: "image/ief" },
+        { fileextension: "jfif", mimetype: "image/pipeg" },
+        { fileextension: "jpe", mimetype: "image/jpeg" },
+        { fileextension: "jpeg", mimetype: "image/jpeg" },
+        { fileextension: "jpg", mimetype: "image/jpeg" },
+        { fileextension: "ms", mimetype: "application/x-troff-ms" },
+        { fileextension: "msg", mimetype: "application/vnd.ms-outlook" },
+        { fileextension: "pdf", mimetype: "application/pdf" },
+        { fileextension: "pot", mimetype: "application/vnd.ms-powerpoint" },
+        { fileextension: "ppm", mimetype: "image/x-portable-pixmap" },
+        { fileextension: "pps", mimetype: "application/vnd.ms-powerpoint" },
+        { fileextension: "ppt", mimetype: "application/vnd.ms-powerpoint" },
+        { fileextension: "pptx", mimetype: "application/vnd.ms-powerpoint" },
+        { fileextension: "rtx", mimetype: "text/richtext" },
+        { fileextension: "swf", mimetype: "application/x-shockwave-flash" },
+        { fileextension: "tex", mimetype: "application/x-tex" },
+        { fileextension: "texi", mimetype: "application/x-texinfo" },
+        { fileextension: "texinfo", mimetype: "application/x-texinfo" },
+        { fileextension: "tif", mimetype: "image/tiff" },
+        { fileextension: "tiff", mimetype: "image/tiff" },
+        { fileextension: "txt", mimetype: "text/plain" },
+        { fileextension: "wcm", mimetype: "application/vnd.ms-works" },
+        { fileextension: "wdb", mimetype: "application/vnd.ms-works" },
+        { fileextension: "wks", mimetype: "application/vnd.ms-works" },
+        { fileextension: "wps", mimetype: "application/vnd.ms-works" },
+        { fileextension: "xla", mimetype: "application/vnd.ms-excel" },
+        { fileextension: "xlc", mimetype: "application/vnd.ms-excel" },
+        { fileextension: "xlm", mimetype: "application/vnd.ms-excel" },
+        { fileextension: "xls", mimetype: "application/vnd.ms-excel" },
+        { fileextension: "xlsx", mimetype: "application/vnd.ms-excel" },
+        { fileextension: "xlt", mimetype: "application/vnd.ms-excel" },
+        { fileextension: "xlw", mimetype: "application/vnd.ms-excel" },
+        { fileextension: "zip", mimetype: "application/zip" },
+        { fileextension: "csv", mimetype: "application/vnd.ms-excel" }
+      ];
+
+      function getUserManual() {
+        debugger;
+        try {
+          var filepath =
+            "||gessap077|interface|CERCLNT950|INBOUND|DNA|DNA2.0 User Manual v1.1.pdf";
+          busyDialog.open();
+          var urlToCall =
+            fnetaService + "/Publication_File('" + filepath + "')";
+          var objUtil = new utility();
+          objUtil.doOnlineRequest(
+            fnetaService,
+            urlToCall,
+            objUtil.getOnlineFileDataSuccess,
+            objUtil.getOnlineFileDataDataError
+          );
+        } catch (e) {
+          busyDialog.close();
+          sap.ui.commons.MessageBox.alert("error on getting data : " + e);
+        }
+      }
+    </script>
+
+    <script>
+      var busyDialog = busyDialog
+        ? busyDialog
+        : new sap.m.BusyDialog("busy", {
+            //text : 'Loading Dashboard... \n0% Completed',
+            text: "Loading Dynamic Net-A ...",
+            //customIcon : 'images/ajax-loader.gif',
+            title: "Loading..."
+          });
+
+      sap.ui.localResources("view");
+      var app = new sap.m.App({ initialPage: "idhome1" });
+      var page = sap.ui.view({
+        id: "idhome1",
+        viewName: "view.UTILREP1",
+        type: sap.ui.core.mvc.ViewType.JS
+      });
+
+      app.addPage(page);
+      app.placeAt("content");
+
+      //app.setBackgroundColor("#efd5d5");
+    </script>
+  </head>
+  <body class="sapUiBody" role="application">
+    <div id="content"></div>
+    <!-- <a href="https://newseaweb.seacoglobal.com/sap/opu/odata/sap/ZUI5_RCN_DOC_SRV/downloadSet(Filename='06_2017_2943_0002406970_2.jpg')/$value" title="Image Caption Here" data-spzoom>
+  			<img src="https://newseaweb.seacoglobal.com/sap/opu/odata/sap/ZUI5_RCN_DOC_SRV/downloadSet(Filename='06_2017_2943_0002406970_2.jpg')/$value" sizes="100x80" alt="thumb">
+		</a> -->
+  </body>
+</html>

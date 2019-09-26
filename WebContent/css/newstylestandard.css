@@ -1,0 +1,22 @@
+
+.sapMPopup-CTX .sapMIBar.sapMHeader-CTX {
+    background-color: #f7a8a8;
+    filter: none;
+    background-image: none;
+}
+
+.sapMIBar-CTX .sapMTitle {
+    color: #000000;
+    text-shadow: none;
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.sapUiTableHeightResizer {
+    background-image: url(../base/img/splitter_horiz_grip.gif);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: #a3a3a7;
+    box-sizing: border-box;
+    height: 8px !important;
+}
