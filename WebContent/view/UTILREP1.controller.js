@@ -24,42 +24,42 @@ sap.ui.controller("view.UTILREP1", {
 * @memberOf view.systemmonitor
 */
 	onAfterRendering: function() {
-//		var oTable = sap.ui.getCore().byId("idTableFNASummary");
-//        var oModel = oTable.getModel();
-//		 var abc = new fneta().colorRows(oTable, oModel);
-		$('#idFormulaHover').jBox('Tooltip', {
-			position: {
-				x: 'right',
-				y: 'center'
-			},
-			outside: 'x' // Horizontal Tooltips need to change their outside position
-		});
+// //		var oTable = sap.ui.getCore().byId("idTableFNASummary");
+// //        var oModel = oTable.getModel();
+// //		 var abc = new fneta().colorRows(oTable, oModel);
+// 		$('#idFormulaHover').jBox('Tooltip', {
+// 			position: {
+// 				x: 'right',
+// 				y: 'center'
+// 			},
+// 			outside: 'x' // Horizontal Tooltips need to change their outside position
+// 		});
 		
-		$('#idfremNetaFormula').jBox('Tooltip', {
-			position: {
-				x: 'right',
-				y: 'center'
-			},
-			outside: 'x' // Horizontal Tooltips need to change their outside position
-		});
+// 		$('#idfremNetaFormula').jBox('Tooltip', {
+// 			position: {
+// 				x: 'right',
+// 				y: 'center'
+// 			},
+// 			outside: 'x' // Horizontal Tooltips need to change their outside position
+// 		});
 		
-		$('#idResetFilter').jBox('Tooltip');
+// 		$('#idResetFilter').jBox('Tooltip');
 		
-		$('#idToolbarFormulaHover').jBox('Tooltip', {
-			position: {
-				x: 'right',
-				y: 'center'
-			},
-			outside: 'x' // Horizontal Tooltips need to change their outside position
-		});
+// 		$('#idToolbarFormulaHover').jBox('Tooltip', {
+// 			position: {
+// 				x: 'right',
+// 				y: 'center'
+// 			},
+// 			outside: 'x' // Horizontal Tooltips need to change their outside position
+// 		});
 		
-		$('#idButtonDownloadDNA').jBox('Tooltip', {
-			position: {
-				x: 'right',
-				y: 'center'
-			},
-			outside: 'x' // Horizontal Tooltips need to change their outside position
-		});
+// 		$('#idButtonDownloadDNA').jBox('Tooltip', {
+// 			position: {
+// 				x: 'right',
+// 				y: 'center'
+// 			},
+// 			outside: 'x' // Horizontal Tooltips need to change their outside position
+// 		});
 			  
 		
 	},
